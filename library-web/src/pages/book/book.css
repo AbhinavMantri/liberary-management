@@ -1,0 +1,13 @@
+.book-list-wrapper {
+    margin-top: 24px;
+}
+
+.book-list-wrapper .list-group-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.book-list-wrapper .badge-pill {
+    border-radius: 8px;
+}
