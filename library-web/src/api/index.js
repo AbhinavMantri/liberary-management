@@ -25,7 +25,6 @@ const request = async (type, config, params) => {
     }
 
     const url = typeof urls[type] === "function" && params ? urls[type](config) : urls[type];
-    debugger;
     
     // return Promise.reject("");
     return fetch(`${process.env.REACT_APP_API_URL}${url}`, config).then(res => res.json());
