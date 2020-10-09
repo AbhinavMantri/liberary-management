@@ -27,6 +27,7 @@ GET http://localhost:8080/books
 
 ###
 
+
 GET http://localhost:8080/books/1
 access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjAyMTg2NzE0LCJleHAiOjE2MDIxOTAzMTR9.kQ3he_g0kbJI9I70OrGwa6J7__JKVIRvsgyek11zVSc
 
@@ -109,9 +110,9 @@ access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNjAyMjEzM
 
 ###
 
-POST http://localhost:8080/books/5/reviews
+POST http://localhost:8080/books/1/reviews
 Content-Type: application/json
-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjAyMjI1MjMxLCJleHAiOjE2MDIyMjg4MzF9.2PCfJNJA4XlCsl6nLy0breGTY47ExfB5r4mJd1BwHBw
+access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjAyMjM1NTUzLCJleHAiOjE2MDIyMzkxNTN9.FpHG7JyTZaCuIv1oLeL9opuxQxLYfnS_GCjKqmZ_L3Q
 
 {
     "comment": "Was great to reading this",
@@ -122,5 +123,5 @@ access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjAyMjI1M
 
 GET http://localhost:8080/books/5/reviews
 Content-Type: application/json
-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiaWF0IjoxNjAyMjI4NDM4LCJleHAiOjE2MDIyMzIwMzh9.efTh3S-1yp_97spOPyHaXBXcCQNgw33KTov-wtxHyeQ
+access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiaWF0IjoxNjAyMjM1NzA5LCJleHAiOjE2MDIyMzkzMDl9.2MqzMK5_3haKu3138SPKBaDhDx9Z-oDTOneJuscGBHU
 
