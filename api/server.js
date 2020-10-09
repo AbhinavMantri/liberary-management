@@ -1,6 +1,8 @@
 require("dotenv").config();
 
 const express = require("express");
+const cors = require("cors");
+
 const connectDB = require("./dbConnection/connectDB");
 const { UserRoutes } = require("./user/routes");
 const { authenticate } = require("./filters");
@@ -11,6 +13,8 @@ const PORT = 8080;
 
 // support json data in request body
 app.use(express.json());
+
+app.use(cors());
 
 app.use("/users", UserRoutes);
 app.use("/books", authenticate, BookRoutes);
