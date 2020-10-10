@@ -9,19 +9,22 @@
             <div class="card-title">
                 <div class="d-flex w-100 justify-content-between">
                     <h4>Books</h4>
-                    <button *ngIf="isAdmin()" class="btn btn-info" (onClick)="addBtnClick()">Create Book</button>
+                    <button *ngIf="isAdmin() && !showForm" class="btn btn-info" (click)="addBtnClick()">Create Book</button>
                 </div>
             </div>
         </div>
         <div class="card-body">
-            <div class="list-group">
+            <div class="add-book-form" *ngIf="showForm">
+                <app-add-book [action]="action" [id]="bookId" (displayForm)="displayForm(false)" (hideError)="setErrorMessage(null)"></app-add-book>
+            </div>
+            <div *ngIf="!showForm" class="list-group">
                 <div *ngFor="let book of books" class="list-group-item list-group-item-action">  
                   <div class="d-flex w-100 justify-content-between">  
                     <h6 class="mb-1">{{ book.title }}</h6>                      
                     <div class="d-flex">
                         <a class="btn btn-primary" routerLink="/books/{{book.id}}">Open</a>
-                        <button *ngIf="isAdmin()" class="btn btn-warning" (onClick)="updateBtnClick(book)">Update</button>
-                        <button *ngIf="isAdmin()" class="btn btn-danger" (onClick)="onDelete(book)">Delete</button>
+                        <button *ngIf="isAdmin()" class="btn btn-warning" (click)="updateBtnClick(book)">Update</button>
+                        <button *ngIf="isAdmin()" class="btn btn-danger" (click)="deleteBook(book.id)">Delete</button>
                     </div>
                   </div>
                 </div>

@@ -1,0 +1,21 @@
+<div class="card add-product">
+    <div class="card-header">
+        <div class="d-flex w-100 justify-content-between">
+            <h5>{{ action }} Book</h5>
+            <button class="btn btn-danger" (click)="hideForm()">Discard</button>
+        </div>
+    </div>
+    <div class="card-body">
+        <form (ngSubmit)="saveBook()" ngNativeValidate>
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input [(ngModel)]="book && book.title" type="text" class="form-control" name="title" id="title" required>
+            </div>
+            <div class="form-group">
+                <label for="body">Content</label>
+                <textarea class="form-control" id="body" [(ngModel)]="book && book.body" name="body" rows="10" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-info">{{ action }}</button>
+        </form>
+    </div>
+</div>

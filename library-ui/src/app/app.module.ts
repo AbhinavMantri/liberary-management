@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
@@ -17,6 +17,7 @@ import { UserEffect } from './store/effects/user.effect';
 import { BookEffect } from './store/effects/book.effect';
 import { CookieService } from 'ngx-cookie-service';
 import { TokenIntercept } from './api/token.interceptor';
+import { AddBookComponent } from './add-book/add-book.component';
 
 @NgModule({
   declarations: [
@@ -25,12 +26,14 @@ import { TokenIntercept } from './api/token.interceptor';
     BooksComponent,
     BookDetailComponent,
     HomeComponent,
-    AutoLoginComponent
+    AutoLoginComponent,
+    AddBookComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     StoreModule.forRoot(reducers, {}),
     EffectsModule.forRoot([ UserEffect, BookEffect ])

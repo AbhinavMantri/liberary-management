@@ -3,7 +3,7 @@ import { Book } from '../models/book.model';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { AppState } from '../store/app.state';
-import { Books } from '../store/actions/book.action';
+import { Books, DeleteBook } from '../store/actions/book.action';
 import { User } from '../models/user.model';
 
 @Component({
@@ -16,6 +16,10 @@ export class BooksComponent implements OnInit {
   user: User | null;
   getState: Observable<any>;
   userState: Observable<any>;
+  showForm: boolean = false;
+  errorMessage: string;
+  action: string | null;
+  bookId: number | null = null;
 
   constructor(private store: Store<AppState>) { 
     this.getState = store.select("bookState");
@@ -41,4 +45,27 @@ export class BooksComponent implements OnInit {
   isAdmin(): boolean {
     return this.user.role === 'ADMIN';
   }
+
+  addBtnClick(): void {
+    this.displayForm(true, "Add");
+    this.bookId = null;
+  }
+
+  updateBtnClick(book): void {
+    this.displayForm(true, "Update");
+    this.bookId = book.id;
+  }
+
+  deleteBook(id): void {
+    this.store.dispatch(new DeleteBook({ id }));
+  }
+
+  displayForm(showForm: boolean, action: string | null = null): void {
+    this.showForm = showForm;
+    this.action = action;
+  }
+
+  setErrorMessage(error: string): void {
+    this.errorMessage = error;
+  } 
 }

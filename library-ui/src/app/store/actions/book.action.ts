@@ -7,6 +7,12 @@ export enum BookActionTypes {
     BOOK_SUCCESS = "[Book] Book Success",
     ADD_REVIEW = "[Book] Add Review",
     ON_FAILURE = '[Book] On Failure',
+    ADD_BOOK = "[Book] Add Book",
+    UPDATE_BOOK = "[Book] Update Book",
+    DELETE_BOOK = "[Book] Delete Book",
+    ADD_BOOK_SUCCESS = "[Book] Add Book Success",
+    UPDATE_BOOK_SUCCESS = "[Book] Update Book Success",
+    DELETE_BOOK_SUCCESS = "[Book] Delete Book Success",
 };
 
 export class Books implements Action {
@@ -46,10 +52,52 @@ export class OnFailure implements Action {
     constructor(public payload: any) {}
 }
 
+export class AddBook implements Action {
+    readonly type = BookActionTypes.ADD_BOOK;
+
+    constructor(public payload: any) {}
+}
+
+export class UpdateBook implements Action {
+    readonly type = BookActionTypes.UPDATE_BOOK;
+
+    constructor(public payload: any) {}
+}
+
+export class DeleteBook implements Action {
+    readonly type = BookActionTypes.DELETE_BOOK;
+
+    constructor(public payload: any) {}
+}
+
+export class DeleteBookSuccess implements Action {
+    readonly type = BookActionTypes.DELETE_BOOK_SUCCESS;
+
+    constructor(public payload: any) {}
+}
+
+export class AddBookSuccess implements Action {
+    readonly type = BookActionTypes.ADD_BOOK_SUCCESS;
+
+    constructor(public payload: any) {}
+}
+
+export class UpdateBookSuccess implements Action {
+    readonly type = BookActionTypes.UPDATE_BOOK_SUCCESS;
+
+    constructor(public payload: any) {}
+}
+
 export type All = 
     | Books
     | Book
     | BooksSuccess
     | BookSuccess
     | AddReview
-    | OnFailure;
+    | OnFailure
+    | AddBook
+    | UpdateBook
+    | DeleteBook
+    | AddBookSuccess
+    | UpdateBookSuccess
+    | DeleteBookSuccess;
