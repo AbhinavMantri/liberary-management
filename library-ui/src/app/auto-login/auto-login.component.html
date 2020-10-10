@@ -1,0 +1,8 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light" *ngIf="isAuthenticated">
+    <a class="navbar-brand" href="/">Library</a>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+        <div class="nav-link" (click)="logout()">Logout</div>
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,24 @@
+<div class="dash-body">
+    <div *ngIf="errorMessage">
+        <div class="alert alert-danger" role="alert">
+          {{errorMessage}}
+        </div>
+    </div>
+    <div class="card book-list" *ngIf="books">
+        <div class="card-header">
+            <div class="card-title">
+                <h4>Books</h4>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="list-group">
+                <div *ngFor="let book of books" class="list-group-item list-group-item-action">  
+                  <div class="d-flex w-100 justify-content-between">  
+                    <h6 class="mb-1">{{ book.title }}</h6>                      
+                    <a class="btn btn-primary" routerLink="/books/{{book.id}}">Open</a>
+                  </div>
+                </div>
+            </div>
+        </div>    
+    </div>
+</div>

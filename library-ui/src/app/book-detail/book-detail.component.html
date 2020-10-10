@@ -1,0 +1,16 @@
+<div class="card book-detail-wrapper">
+    <div class="card-header">
+        <div class="card-title">
+            <h4>Book</h4>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="card">
+            <div class="card-body book-detail" *ngIf="book">
+                <h4>{{book.title}}</h4>
+                <p>{{book.body}}</p>
+            </div>
+        </div>    
+    </div>
+    <button class="btn btn-secondary" (click)="goBack()">go back</button>
+</div>
