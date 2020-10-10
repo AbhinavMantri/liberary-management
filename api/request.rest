@@ -2,7 +2,7 @@ POST http://localhost:8080/users/auth
 Content-Type: application/json
 
 {
-    "email": "John@gmail.com",
+    "email": "Betsy@gmail.com",
     "password": "Password@1234"
 }
 
@@ -125,3 +125,7 @@ GET http://localhost:8080/books/5/reviews
 Content-Type: application/json
 access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiaWF0IjoxNjAyMjM1NzA5LCJleHAiOjE2MDIyMzkzMDl9.2MqzMK5_3haKu3138SPKBaDhDx9Z-oDTOneJuscGBHU
 
+###
+
+GET http://localhost:8080/books/5
+access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiaWF0IjoxNjAyMzQ5NTQ0LCJleHAiOjE2MDIzNTMxNDR9.NPzwavSW3XTAfQ9LmGZ6jdiTfDkuXBoac11TD8wW1Ms

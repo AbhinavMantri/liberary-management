@@ -12,7 +12,7 @@ module.exports = {
         BookService.getBook(req.params.id, req.user)
         .then(data => {
             if(req.user.role === USER_ROLES.USER)
-                UserService.addFavourite(req.user, data);
+                UserService.addFavourite(req.user, data.book);
             res.json({ data });
         })
         .catch(err => {

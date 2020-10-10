@@ -1,4 +1,5 @@
 const { models, sequelize } = require("../../dbConnection");
+const { USER_ROLES } = require("../../utils");
 
 module.exports = {
     addProduct: async function(data) {
@@ -14,34 +15,28 @@ module.exports = {
             where: { id }, attributes: {
                 include: [
                     "id", "title", "body",
-                [    
-                    // Note the wrapping parentheses in the call below!
-                    sequelize.literal(`(
-                        SELECT COUNT(user_id)
-                        FROM book_review as r
-                        WHERE
-                            r.user_id = ${user.id}
-                            AND
-                            r.book_id = ${id}
-                    )`),
-                    'reviewed'
-                ],
                 [
                     sequelize.literal(`(
-                        SELECT COUNT(user_id)
-                        FROM user_history as h
-                        WHERE
-                            h.user_id = ${user.id}
-                            AND
-                            h.book_id = ${id}
+                        SELECT COUNT(user_id) FROM user_history as h
+                        WHERE h.user_id = ${user.id} AND h.book_id = ${id}
                     )`),
                     'marked'   
                 ]
-
             ]},
             
-        }); 
-        return book;
+        });
+        
+        const obj = {};
+
+        if(user.role === USER_ROLES.ADMIN) 
+            obj.reviews = await book.getReviews({ attributes: ["email"], joinTableAttributes: ["comment", "rating"] });
+        else
+            obj.review = await models.BookReview.findOne({ 
+                where: { user_id: user.id, book_id: id }, 
+                attributes: ["comment", "rating"]  
+            });;
+
+        return {book, ...obj};
     },
     getBooks: async function() {
         return models.Book.findAll({ attributes: ["id", "title"] });
@@ -55,6 +50,9 @@ module.exports = {
     getReviews: async function(id) {
         const book = await this.getBook(id);
         return book.getReviews({ attributes: ["email"], joinTableAttributes: ["comment", "rating"] });
+    },
+    getReview: async function(id, user) {
+        return BookReviewService.getReview(id, user.id);
     },
     addReview: async function(review, id, user) {
         // const book = await this.getBook(id);
