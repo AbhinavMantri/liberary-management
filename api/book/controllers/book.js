@@ -1,5 +1,7 @@
 const { BookService } = require("../services");
 const { UserService } = require("../../user/service");
+const { request } = require("express");
+const { USER_ROLES } = require("../../utils");
 
 
 module.exports = {
@@ -9,7 +11,8 @@ module.exports = {
     getBook: function(req, res) {
         BookService.getBook(req.params.id)
         .then(data => {
-            UserService.addFavourite(req.user, data);
+            if(req.user.role === USER_ROLES.USER)
+                UserService.addFavourite(req.user, data);
             res.json({ data });
         })
         .catch(err => {

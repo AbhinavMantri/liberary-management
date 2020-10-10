@@ -19,7 +19,7 @@ export const initialState: State = {
 }
 
 export function reducer(state = initialState, action: All): State {
-    const { accessToken, email, error, message } = action.payload || {};
+    const { user, error, message } = action.payload || {};
     switch(action.type) {
         case UserActionTypes.LOGIN_SUCCESS:
         case UserActionTypes.AUTO_LOGIN_SUCCESS:    
@@ -28,7 +28,7 @@ export function reducer(state = initialState, action: All): State {
                 isAuthenticated: true,
                 user: {
                     ...(state.user || {}),
-                    accessToken, email,
+                    ...user,
                 },
                 errorMessage: null,
                 successMessage: message,

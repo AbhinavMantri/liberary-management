@@ -1,3 +1,18 @@
 .book-list {
     margin-top: 24px;
 }
+
+.book-list {
+    .btn-warning,
+    .btn-danger {
+        margin: 0 6px;
+    }
+
+    .btn-warning {
+        margin-left: 12px;
+    }
+
+    .btn-danger {
+        margin-right: 0;
+    }
+}

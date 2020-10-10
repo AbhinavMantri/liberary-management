@@ -6,6 +6,7 @@ import { Book } from '../models/book.model';
 import { Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
+import { User } from '../models/user.model';
 
 @Component({
   selector: 'app-book-detail',

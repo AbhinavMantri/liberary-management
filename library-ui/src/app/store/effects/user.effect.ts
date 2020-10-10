@@ -36,9 +36,9 @@ export class UserEffect {
         map((action: Login) => action.payload),
         switchMap(payload => {
             return this.userService.login(payload.email, payload.password).pipe(
-                map(user => {
-                    // console.log(user);
-                    return new LoginSuccess({token: user.token, email: payload.email, message: "User have been logged in successfully." });
+                map(data => {
+                    const { user } = data || {};
+                    return new LoginSuccess({ user: { ...user, email: payload.email } });
                 }),
                 catchError(err => {
                     return of(new OnFailure({error: err.error.reason }));
@@ -50,8 +50,9 @@ export class UserEffect {
     @Effect({ dispatch: false })
     LoginSuccess: Observable<any> = this.actions.pipe(
         ofType(UserActionTypes.LOGIN_SUCCESS),
-        tap(user => {
-            this.userService.setUserCookie({email: user.payload.email, accessToken: user.payload.token});
+        tap(data => {
+            const { user } = data.payload || {};
+            this.userService.setUserCookie(user);
             this.router.navigateByUrl("/books");
         })
     );

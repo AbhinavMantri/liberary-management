@@ -7,10 +7,11 @@ module.exports = {
         return models.User.findOne({ where: { id }, attributes: ["id", "email", "role"] }); 
     },
     authenticate: async function(email, password) {
-        const user = await models.User.findOne({ where: { email: email, password: password }, attributes: [ "id" ] });
+        const user = await models.User.findOne({ where: { email: email, password: password }, attributes: [ "id", "role" ] });
 
         if(user) {
-           return Promise.resolve(jwtUtil.getToken(user));
+           const accessToken = await jwtUtil.getToken(user); 
+           return Promise.resolve({ accessToken, role: user.role });
         } else {
            return Promise.reject(new Error("Invalid Email/Password"));
         }

@@ -6,7 +6,7 @@ const { USER_ROLES } = require("../../utils");
 const router = express.Router();
 
 router.get("/", BookController.getBooks);
-router.get("/:id", permit(USER_ROLES.USER), BookController.getBook);
+router.get("/:id", BookController.getBook);
 router.post("/", permit(USER_ROLES.ADMIN), BookController.addProduct);
 router.put("/:id", permit(USER_ROLES.ADMIN), BookController.updateProduct);
 router.delete("/:id", permit(USER_ROLES.ADMIN), BookController.deleteProduct);
