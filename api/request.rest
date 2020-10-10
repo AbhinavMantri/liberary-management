@@ -41,7 +41,7 @@ access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNjAyMjEzM
 
 POST  http://localhost:8080/books
 Content-Type: application/json 
-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjAyMTc0ODM0LCJleHAiOjE2MDIxNzg0MzR9.vS3KicN57cXwLD0KWdCkBXOLfodtj7QvOITlwpqGqT0
+access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiaWF0IjoxNjAyMzIxNTg0LCJleHAiOjE2MDIzMjUxODR9.SILB3JNpMhnOn-_cmlmNU0yMITV3FpVk_oyXWNlD6lc
 
 {
     "title": "The Adventures of Sherlock Holmes",
@@ -77,13 +77,13 @@ GET http://localhost:8080/users/favourites
 access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNjAyMjEzMDI4LCJleHAiOjE2MDIyMTY2Mjh9.UgtumOAlSQwmB0bCN_9IC20fX7KBwa4OIXaIovmiDas
 
 ###
-PUT http://localhost:8080/books/4
+PUT http://localhost:8080/books/6
 Content-Type: application/json
-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiaWF0IjoxNjAyMTg3NTM5LCJleHAiOjE2MDIxOTExMzl9.U_icxaZVSc3NXCcJ_TywutZp87VMuReHuLCGnMAVxGE
+access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiaWF0IjoxNjAyMzIxNTg0LCJleHAiOjE2MDIzMjUxODR9.SILB3JNpMhnOn-_cmlmNU0yMITV3FpVk_oyXWNlD6lc
 
 {
-    "title": "Test God"
-    //"body": "This book is not about the holiday called Thanksgiving. It is not about how to celebrate Thanksgiving. This book is a challenge to you to cultivate a heart of thankfulness to God and to the people He has placed in your life 365 days of the year.Thankfulness is not about keeping tradition. It is a matter of the heart. It should be an everyday occurrence. It should be a habit; it should be a way of life. It may seem as though it is small or insignificant to you, but it means a lot to God and to others. I pray that this book will encourage you and challenge you to be thankful for everything.\n--Daniella, from the Introduction\n\n\"You simply will not be the same person two months from now after consciously giving thanks each day for the abundance that exists in your life. And you will have set in motion an ancient spiritual law: the more you have and are grateful for, the more will be given you.\" --Sarah ban Breathnach"
+    "title": "Test God",
+    "body": "This book is not about the holiday called Thanksgiving. It is not about how to celebrate Thanksgiving. This book is a challenge to you to cultivate a heart of thankfulness to God and to the people He has placed in your life 365 days of the year.Thankfulness is not about keeping tradition. It is a matter of the heart. It should be an everyday occurrence. It should be a habit; it should be a way of life. It may seem as though it is small or insignificant to you, but it means a lot to God and to others. I pray that this book will encourage you and challenge you to be thankful for everything.\n--Daniella, from the Introduction\n\n\"You simply will not be the same person two months from now after consciously giving thanks each day for the abundance that exists in your life. And you will have set in motion an ancient spiritual law: the more you have and are grateful for, the more will be given you.\" --Sarah ban Breathnach"
 }
 
 ###
