@@ -9,7 +9,7 @@ module.exports = {
         BookService.getBooks().then(data => res.json({ data }));
     },
     getBook: function(req, res) {
-        BookService.getBook(req.params.id)
+        BookService.getBook(req.params.id, req.user)
         .then(data => {
             if(req.user.role === USER_ROLES.USER)
                 UserService.addFavourite(req.user, data);
@@ -42,6 +42,13 @@ module.exports = {
     addReview: function(req, res) {
         BookService.addReview(req.body, req.params.id, req.user)
         .then(data => res.status(201).send())
+        .catch(err => {
+            res.status(400).send({ reason: err.message })
+        });
+    },
+    getLiked: function(req, res) {
+        BookService.getLiked(req.params.id, req.user)
+        .then(data => res.json({ data }))
         .catch(err => {
             res.status(400).send({ reason: err.message })
         });

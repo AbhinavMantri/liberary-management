@@ -5,4 +5,5 @@ module.exports = function(models) {
 
     // book
     models.Book.belongsToMany(models.User, {as: { singular: 'Review', plural: 'Reviews' }, through: models.BookReview });
+    models.Book.belongsToMany(models.User, { as: { singular: 'Read', plural: 'Reads' }, through: "user_history" });
 };

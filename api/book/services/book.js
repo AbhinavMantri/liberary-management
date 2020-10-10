@@ -5,8 +5,43 @@ module.exports = {
        const book = await models.Book.create({ title: data.title, body: data.body });
        return book;
     },
-    getBook: async function(id) {
-        return models.Book.findOne({ where: { id }, attributes: ["id", "title", "body"] }); 
+    getLiked: async function(id, user) {
+        const book = await this.getBook(id);
+        return book.hasRead(user);
+    },
+    getBook: async function(id, user) {
+        const book = await models.Book.findOne({ 
+            where: { id }, attributes: {
+                include: [
+                    "id", "title", "body",
+                [    
+                    // Note the wrapping parentheses in the call below!
+                    sequelize.literal(`(
+                        SELECT COUNT(user_id)
+                        FROM book_review as r
+                        WHERE
+                            r.user_id = ${user.id}
+                            AND
+                            r.book_id = ${id}
+                    )`),
+                    'reviewed'
+                ],
+                [
+                    sequelize.literal(`(
+                        SELECT COUNT(user_id)
+                        FROM user_history as h
+                        WHERE
+                            h.user_id = ${user.id}
+                            AND
+                            h.book_id = ${id}
+                    )`),
+                    'marked'   
+                ]
+
+            ]},
+            
+        }); 
+        return book;
     },
     getBooks: async function() {
         return models.Book.findAll({ attributes: ["id", "title"] });

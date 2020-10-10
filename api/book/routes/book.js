@@ -12,5 +12,6 @@ router.put("/:id", permit(USER_ROLES.ADMIN), BookController.updateProduct);
 router.delete("/:id", permit(USER_ROLES.ADMIN), BookController.deleteProduct);
 router.get("/:id/reviews", permit(USER_ROLES.ADMIN), BookController.getReviews);
 router.post("/:id/reviews", permit(USER_ROLES.USER), BookController.addReview);
+router.get("/:id/getLiked", permit(USER_ROLES.USER), BookController.getLiked);
 
 module.exports = router;

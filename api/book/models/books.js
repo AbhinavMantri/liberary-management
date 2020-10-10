@@ -24,7 +24,7 @@ module.exports = function(sequelize) {
                 set: function(body)  {
                     this.setDataValue('body', body);
                 },
-            },
+            }
         }, {
             timestamps: false,
             freezeTableName: true,
