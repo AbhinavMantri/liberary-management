@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { User } from '../models/user.model';
+import constants from '../constants';
 
 @Component({
   selector: 'app-book-detail',
@@ -16,6 +17,8 @@ import { User } from '../models/user.model';
 export class BookDetailComponent implements OnInit {
   book: Book | null;
   getState: Observable<any>;
+  rating: number[] = [1, 2, 3, 4, 5];
+  ratings: Object = constants.RATINGS;
 
   constructor(private store: Store<AppState>, private route: ActivatedRoute, private location: Location) { 
     this.getState = store.select("bookState");

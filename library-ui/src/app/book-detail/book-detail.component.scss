@@ -1,3 +1,20 @@
 .book-detail-wrapper {
     margin-top: 24px;
 }
+
+.rating-list {
+    list-style: none;
+
+    span.checked:before {
+        content: "\2605";
+        position: absolute;
+        left: 0;
+        color: gold;
+    }
+
+    span {
+        display: inline-block;
+        position: relative;
+        width: 1.1em;
+    }
+}

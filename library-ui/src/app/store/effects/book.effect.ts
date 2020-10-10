@@ -39,10 +39,11 @@ export class BookEffect {
         map((action: Book) => action.payload),
         switchMap(payload => {
             return this.bookService.getBook(payload.id).pipe(
-                map(book => {
-                    const { data } = book || {};
+                map(resp => {
+                    const { data } = resp || {};
+                    const { book, review, reviews } = data || {};
                     if(data)
-                        return new BookSuccess({ data, id: payload.id });
+                        return new BookSuccess({ data: {...book, review, reviews}, id: payload.id });
                 }),
                 catchError(err => {
                     return of(new OnFailure({error: err.error.reason }));

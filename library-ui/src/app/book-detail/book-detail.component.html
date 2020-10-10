@@ -7,10 +7,41 @@
     <div class="card-body">
         <div class="card">
             <div class="card-body book-detail" *ngIf="book">
-                <h4>{{book.title}}</h4>
+                <div class="d-flex w-100 justify-content-between">
+                    <h4>{{book.title}}</h4>
+                    <div *ngIf="book && book.review" class="review">
+                        <ul class="d-flex rating-list">
+                            <li *ngFor="let i of rating">
+                                <span class="fa fa-star {{i <= ratings[book.review.rating] ? 'checked': ''}}">☆</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
                 <p>{{book.body}}</p>
             </div>
-        </div>    
+        </div> 
+        <div *ngIf="book && book.reviews" class="card">
+            <div class="card-header">
+                <div class="card-title">
+                    <h6>Reviews</h6>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="list-group">
+                    <div *ngFor="let review of book.reviews" class="list-group-item list-group-item-action"> 
+                        <div class="d-flex w-100 justify-content-between">
+                            <div>{{review.book_review.rating}}</div>
+                            <ul class="d-flex rating-list">
+                                <li *ngFor="let i of rating">
+                                    <span class="fa fa-star {{i <= ratings[review.book_review.rating] ? 'checked': ''}}">☆</span>
+                                </li>
+                            </ul>
+                        </div> 
+                        <p>{{review.book_review.comment}}</p>
+                    </div>
+                </div>    
+            </div>
+        </div>   
     </div>
     <div class="card-footer">
         <button class="btn btn-secondary" (click)="goBack()">go back</button>
